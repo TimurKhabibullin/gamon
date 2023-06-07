@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Muhamad Nauval Azhar">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="This is a login page template based on Bootstrap 5">
+  <title>Bootstrap 5 Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+<section class="h-100">
+  <div class="container h-100">
+    <div class="row justify-content-sm-center h-100">
+      <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+        <div class="card shadow-lg">
+          <div class="card-body p-5">
+            <h1 class="fs-4 card-title fw-bold mb-4">Редактирование</h1>
+            <form th:method="POST" th:action="@{/person/edit}" th:object="${person}">
+              <div class="mb-3">
+                <label class="mb-2 text-muted" for="username">Username</label>
+                <input  id="username" type="text" th:field="*{username}" class="form-control" name="username" value="" required autofocus>
+                <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">username Error</div>
+              </div>
+
+              <div class="mb-3">
+                <div class="mb-2 w-100">
+                  <label class="text-muted" for="email">Email</label>
+                </div>
+                <input id="email" type="text" th:field="*{email}" class="form-control" name="email" required>
+                <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</div>
+              </div>
+                <button type="submit" class="btn btn-primary ms-auto">
+                  Update!
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/login.js"></script>
+</body>
+</html>
